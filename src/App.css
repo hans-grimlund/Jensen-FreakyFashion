@@ -1,0 +1,14 @@
+body {
+    color: #707070;
+}
+
+a {
+    color: #707070;
+    text-decoration: none;
+}
+
+.image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

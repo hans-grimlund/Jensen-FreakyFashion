@@ -1,0 +1,14 @@
+.spot {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 5px 10px 10px 2px rgba(0, 0, 0, 0.3);
+    height: 180px;
+    width: 300px;
+}
+
+.spot-text {
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(1px);
+    color: #fff;
+}

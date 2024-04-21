@@ -1,0 +1,10 @@
+.hero-image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 230px;
+}
+
+.hero {
+    box-shadow: 5px 10px 10px 10px rgba(0, 0, 0, 0.1);
+}
