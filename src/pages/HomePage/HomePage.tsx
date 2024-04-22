@@ -6,6 +6,8 @@ import {getProducts} from "../../Services/APIService.tsx";
 import {ProductClass} from "../../classes/ProductClass.tsx";
 import {FilterClass} from "../../classes/FilterClass.tsx";
 import { Spinner } from "../../components/Spinner/Spinner.tsx";
+import {Navbar} from "../../components/Navbar/Navbar.tsx";
+import { Footer } from "../../components/Footer/Footer.tsx";
 
 export const HomePage = () => {
     const [products, setProducts] = useState<ProductClass[]>([]);
@@ -41,34 +43,38 @@ export const HomePage = () => {
         )))
     }, [products]);
     return (
-        <div className="p-4">
-            <Hero title={'Freaky Fashion'} content={'Volume, history and a beloved monastery, one must capture the teacher in order to view the lama of sincere attitude.'}/>
-            <div className={'d-flex row gap-4 col-12 justify-content-evenly p-3'}>
-                <Spot img={'spot1.jpeg'} text={'Do and you will be yearned daily.'} link={'/'} />
-                <Spot img={'spot2.jpeg'} text={'Relativity emerges when you reject with love.'} link={'/'} />
-                <Spot img={'spot3.jpeg'} text={'Disturb and you will be felt daily.'} link={'/'} />
+        <>
+            <Navbar />
+            <div className="p-4">
+                <Hero title={'Freaky Fashion'} content={'Volume, history and a beloved monastery, one must capture the teacher in order to view the lama of sincere attitude.'}/>
+                <div className={'d-flex row gap-4 col-12 justify-content-evenly p-3'}>
+                    <Spot img={'spot1.jpeg'} text={'Do and you will be yearned daily.'} link={'/'} />
+                    <Spot img={'spot2.jpeg'} text={'Relativity emerges when you reject with love.'} link={'/'} />
+                    <Spot img={'spot3.jpeg'} text={'Disturb and you will be felt daily.'} link={'/'} />
+                </div>
+                <div className={'p-4 d-flex justify-content-evenly row gap-4 mt-5'}>
+                    {isLoading ? <Spinner /> : productElements}
+                </div>
+                <div className={'d-flex p-4 gap-4 col-12 justify-content-evenly text-nowrap mt-5'}>
+                    <div className={'d-flex align-items-center'}>
+                        <span className={'material-symbols-outlined me-2'}>globe</span>
+                        <span>Free shipping and returns</span>
+                    </div>
+                    <div className={'d-flex align-items-center ms-4'}>
+                        <span className={'material-symbols-outlined me-2'}>travel</span>
+                        <span>Express delivery</span>
+                    </div>
+                    <div className={'d-flex align-items-center ms-4'}>
+                        <span className={'material-symbols-outlined me-2'}>security</span>
+                        <span>Secure payments</span>
+                    </div>
+                    <div className={'d-flex align-items-center ms-4'}>
+                        <span className={'material-symbols-outlined me-2'}>sentiment_satisfied</span>
+                        <span>Daily news</span>
+                    </div>
+                </div>
             </div>
-            <div className={'p-4 d-flex justify-content-evenly row gap-4 mt-5'}>
-                {isLoading ? <Spinner /> : productElements}
-            </div>
-            <div className={'d-flex p-4 gap-4 col-12 justify-content-evenly text-nowrap mt-5'}>
-                <div className={'d-flex align-items-center'}>
-                    <span className={'material-symbols-outlined me-2'}>globe</span>
-                    <span>Free shipping and returns</span>
-                </div>
-                <div className={'d-flex align-items-center ms-4'}>
-                    <span className={'material-symbols-outlined me-2'}>travel</span>
-                    <span>Express delivery</span>
-                </div>
-                <div className={'d-flex align-items-center ms-4'}>
-                    <span className={'material-symbols-outlined me-2'}>security</span>
-                    <span>Secure payments</span>
-                </div>
-                <div className={'d-flex align-items-center ms-4'}>
-                    <span className={'material-symbols-outlined me-2'}>sentiment_satisfied</span>
-                    <span>Daily news</span>
-                </div>
-            </div>
-        </div>
+            <Footer />
+        </>
     )
 }

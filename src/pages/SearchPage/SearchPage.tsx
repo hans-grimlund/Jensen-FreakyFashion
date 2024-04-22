@@ -5,6 +5,8 @@ import {getProducts} from "../../Services/APIService.tsx";
 import {FilterClass} from "../../classes/FilterClass.tsx";
 import {ProductClass} from "../../classes/ProductClass.tsx";
 import { Spinner } from "../../components/Spinner/Spinner.tsx";
+import {Navbar} from "../../components/Navbar/Navbar.tsx";
+import {Footer} from "../../components/Footer/Footer.tsx";
 
 export const SearchPage = () => {
     const { searchterm } = useParams()
@@ -44,13 +46,17 @@ export const SearchPage = () => {
 
     const resultTitle = (<span>{products.length} results from "{searchterm}"</span>)
     return (
-        <div className="d-flex flex-column justify-content-center p-4">
-            <div className="d-flex justify-content-center mb-4">
-                {isLoading ? null : resultTitle}
+        <>
+            <Navbar />
+            <div className="d-flex flex-column justify-content-center p-4">
+                <div className="d-flex justify-content-center mb-4">
+                    {isLoading ? null : resultTitle}
+                </div>
+                <div className="d-flex gap-5 row justify-content-evenly">
+                    {isLoading ? <Spinner /> : productCards}
+                </div>
             </div>
-            <div className="d-flex gap-5 row justify-content-evenly">
-                {isLoading ? <Spinner /> : productCards}
-            </div>
-        </div>
+            <Footer />
+        </>
     )
 }

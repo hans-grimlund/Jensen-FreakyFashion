@@ -5,6 +5,8 @@ import {FilterClass} from "../../classes/FilterClass.tsx";
 import {useEffect, useState} from "react";
 import {ProductClass} from "../../classes/ProductClass.tsx";
 import {Spinner} from "../../components/Spinner/Spinner.tsx";
+import {Navbar} from "../../components/Navbar/Navbar.tsx";
+import {Footer} from "../../components/Footer/Footer.tsx";
 
 export const ProductPage = () => {
     const { productName } = useParams();
@@ -59,8 +61,12 @@ export const ProductPage = () => {
         fetchProduct();
     }, []);
     return (
-        <div className="d-flex p-4">
-            {isloading ? <Spinner /> : productElement}
-        </div>
+        <>
+            <Navbar />
+            <div className="d-flex p-4">
+                {isloading ? <Spinner /> : productElement}
+            </div>
+            <Footer />
+        </>
     )
 }

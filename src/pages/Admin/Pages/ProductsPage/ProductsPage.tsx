@@ -5,6 +5,8 @@ import {ProductClass} from "../../../../classes/ProductClass.tsx";
 import {Spinner} from "../../../../components/Spinner/Spinner.tsx";
 import {Dialog} from "../../../../components/Dialog/Dialog.tsx";
 import {useNavigate} from "react-router-dom";
+import {TopBar} from "../../components/TopBar/TopBar.tsx";
+import {Sidebar} from "../../components/Sidebar/Sidebar.tsx";
 
 export const ProductsPage = () => {
     const [products, setProducts] = useState<ProductClass[]>([]);
@@ -75,14 +77,30 @@ export const ProductsPage = () => {
         </table>
     )
     return (
-        <div className="p-4 d-flex flex-column">
-            {deleteDialogIsVisible ? <Dialog text="Delete product?" handleYes={deleteProduct} handleNo={() => {setDeleteDialogIsVisible(false)}}/> : null}
-            <div className="col-12 d-flex justify-content-between align-items-center">
-                <h2>Products</h2>
-                <button onClick={() => {nav("new")}} className="btn btn-outline-success">New product</button>
-            </div>
-            <div className="mt-4">
-                {isLoading ? <Spinner /> : table}
+        <div className="position-relative d-flex flex-column" style={{height: '100vh'}}>
+            <TopBar/>
+            <div className="col-12 d-flex h-100">
+                <div className="flex-grow-0">
+                    <Sidebar/>
+                </div>
+                <div className="flex-grow-1">
+                    <div className="p-4 d-flex flex-column">
+                        {deleteDialogIsVisible ?
+                            <Dialog text="Delete product?" handleYes={deleteProduct} handleNo={() => {
+                                setDeleteDialogIsVisible(false)
+                            }}/> : null}
+                        <div className="col-12 d-flex justify-content-between align-items-center">
+                            <h2>Products</h2>
+                            <button onClick={() => {
+                                nav("new")
+                            }} className="btn btn-outline-success">New product
+                            </button>
+                        </div>
+                        <div className="mt-4">
+                            {isLoading ? <Spinner/> : table}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )
